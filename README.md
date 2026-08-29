@@ -46,6 +46,73 @@ v                                           v
 
 ---
 
+## 🏗️ System Architecture
+
+```text
++---------------------------------------------------------------------------------------+
+| 1. SYNTHETIC DEMAND GENERATION ENGINE                                                 |
+|    • Python 3.12 | NumPy | Faker | Pandas                                             |
+|    • Simulates 46,000+ Poisson-distributed daily orders across 500 SKUs & 50 Vendors  |
++-------------------------------------------+-------------------------------------------+
+                                            |
+                                            v
++---------------------------------------------------------------------------------------+
+| 2. ENTERPRISE RELATIONAL WAREHOUSE                                                    |
+|    • PostgreSQL 16 (Products, Multi-Region Suppliers, Warehouse Zones, Sales Orders)  |
++-------------------------------------------+-------------------------------------------+
+                                            |
+                                            v
++---------------------------------------------------------------------------------------+
+| 3. ANALYTICAL BUSINESS LOGIC LAYER                                                    |
+|    • SQL Multi-Tier CTEs View: v_inventory_risk_monitor                               |
+|    • Computes rolling ADD, MDD, Lead-Time Variance, Dynamic Safety Stock & ROP        |
++---------------------+-------------------------------------------+---------------------+
+                      |                                           |
+                      v                                           v
++---------------------------------------------+   +-------------------------------------+
+| 4. EXECUTIVE BI DECISION SUITE              |   | 5. OPERATIONAL AUTOMATION ENGINE    |
+|    • Power BI (Cards v2, DAX, Custom UI)    |   |    • alert_engine.py                |
+|    • Tracks $19.00M Working Capital         |   |    • Daily exception scan           |
+|    • Highlights $20.85M Replenishment Need  |   |    • Generates CSV PO Manifests     |
++---------------------------------------------+   +-------------------------------------+
+```
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TD
+    subgraph S1["1. Synthetic Demand Generation Engine"]
+        A["Python 3.12 | NumPy | Faker | Pandas<br/>46,000+ Poisson Orders across 500 SKUs & 50 Vendors"]
+    end
+
+    subgraph S2["2. Enterprise Relational Warehouse"]
+        B["PostgreSQL 16<br/>(Products, Suppliers, Zones, Orders)"]
+    end
+
+    subgraph S3["3. Analytical Business Logic Layer"]
+        C["SQL Analytical View: v_inventory_risk_monitor<br/>(Rolling ADD, MDD, Safety Stock, Dynamic ROP)"]
+    end
+
+    subgraph S4["4. Executive BI Suite"]
+        D["Power BI Dashboard<br/>$19.00M Working Capital | $20.85M PO Exposure"]
+    end
+
+    subgraph S5["5. Operational Automation Engine"]
+        E["Python PO Dispatch Engine (alert_engine.py)<br/>Automated CSV Manifest Generation"]
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    C --> E
+
+    style S1 fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px
+    style S2 fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px
+    style S3 fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px
+    style S4 fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px
+    style S5 fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px
+```
+
 ## 📐 Mathematical & Supply Chain Foundations
 
 Static minimum buffers fail during volatile supplier delays. This system dynamically calculates safety stock and order triggers per SKU across a rolling 180-day sales observation window:
