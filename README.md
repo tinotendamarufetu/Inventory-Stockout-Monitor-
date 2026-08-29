@@ -105,6 +105,8 @@ Static minimum buffers fail during volatile supplier delays. This system dynamic
 
 ## 🚀 Setup & Execution Guide
 
+## 🚀 Setup & Execution Guide
+
 ### 1. Prerequisites & Environment Setup
 ```bash
 # Clone the repository
@@ -117,33 +119,41 @@ source venv/bin/activate  # On Windows: .\venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+```
 
-2. Database Ingestion
+### 2. Database Ingestion
 Ensure PostgreSQL is running locally, then initialize the database and populate simulated transactions:
-
+```bash
 python python_engine/generate_data.py
+```
 
-3. Build Analytical Database View
+### 3. Build Analytical Database View
 Execute the view definition inside PostgreSQL:
-
+```bash
 psql -U postgres -d inventory_db -f sql/v_inventory_risk_monitor.sql
+```
 
-4. Run Daily Replenishment Dispatch Engine
-
+### 4. Run Daily Replenishment Dispatch Engine
+```bash
 python python_engine/alert_engine.py
+```
+*Outputs a timestamped CSV order manifest in `dispatch_orders/`.*
 
-Outputs a timestamped CSV order manifest in dispatch_orders/.
+---
 
-📈 Key Metrics & Results
-- Catalog Monitored: 500 active SKUs across 6 distribution categories.
-- Working Capital Tracked: $19.00M across regional fulfillment nodes.
-- Replenishment Exposure Identified: $20.85M across 261 critical and 16 warning SKUs.
-- Automation SLA: Reduced stockout auditing and manual vendor reconciliation from multi-hour spreadsheet reviews to real-time programmatic extraction.
+## 📈 Key Metrics & Results
 
-👤 Author
-Tinotenda Muchenje
-Master of Science in Data Science | Enterprise Analytics & Supply Chain Systems
-LinkedIn: linkedin.com/in/tinomaruz
-Medium: @tinotendamarufetu
+* **Catalog Monitored**: 500 active SKUs across 6 distribution categories.
+* **Working Capital Tracked**: **$19.00M** across regional fulfillment nodes.
+* **Replenishment Exposure Identified**: **$20.85M** across 261 critical and 16 warning SKUs.
+* **Automation SLA**: Reduced stockout auditing and manual vendor reconciliation from multi-hour spreadsheet reviews to real-time programmatic extraction.
 
+---
 
+## 👤 Author
+
+**Tinotenda Muchenje**
+* **Master of Science in Data Science** | Enterprise Analytics & Supply Chain Systems[cite: 1, 2]
+* **LinkedIn**: [linkedin.com/in/tinomaruz](https://linkedin.com/in/tinomaruz)[cite: 2]
+* **Email**: [tinotendamarufetu@gmail.com](mailto:tinotendamarufetu@gmail.com)[cite: 2]
+* **Medium**: [@tinotendamarufetu](https://medium.com/@tinotendamarufetu)
