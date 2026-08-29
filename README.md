@@ -105,8 +105,6 @@ Static minimum buffers fail during volatile supplier delays. This system dynamic
 
 ## 🚀 Setup & Execution Guide
 
-## 🚀 Setup & Execution Guide
-
 ### 1. Prerequisites & Environment Setup
 ```bash
 # Clone the repository
