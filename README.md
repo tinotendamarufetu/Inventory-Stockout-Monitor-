@@ -17,68 +17,6 @@
 
 ## 🏗️ System Architecture
 
-+---------------------------------------------------------------------------------------+
-| 1. SYNTHETIC DEMAND GENERATION ENGINE                                                 |
-|    • Python 3.12 | NumPy | Faker | Pandas                                            |
-|    • Simulates 46,000+ Poisson-distributed daily orders across 500 SKUs & 50 Vendors  |
-+-------------------------------------------+-------------------------------------------+
-|
-v
-+---------------------------------------------------------------------------------------+
-| 2. ENTERPRISE RELATIONAL WAREHOUSE                                                    |
-|    • PostgreSQL 16 (Products, Multi-Region Suppliers, Warehouse Zones, Sales Orders)  |
-+-------------------------------------------+-------------------------------------------+
-|
-v
-+---------------------------------------------------------------------------------------+
-| 3. ANALYTICAL BUSINESS LOGIC LAYER                                                    |
-|    • SQL Multi-Tier CTEs View: v_inventory_risk_monitor                             |
-|    • Computes rolling ADD, MDD, Lead-Time Variance, Dynamic Safety Stock & ROP        |
-+---------------------+-------------------------------------------+---------------------+
-|                                           |
-v                                           v
-+---------------------------------------------+   +-------------------------------------+
-| 4. EXECUTIVE BI DECISION SUITE              |   | 5. OPERATIONAL AUTOMATION ENGINE    |
-|    • Power BI (Cards v2, DAX, Custom UI)    |   |    • alert_engine.py              |
-|    • Tracks $19.00M Working Capital         |   |    • Daily exception scan           |
-|    • Highlights $20.85M Replenishment Need  |   |    • Generates CSV PO Manifests     |
-+---------------------------------------------+   +-------------------------------------+
-
----
-
-## 🏗️ System Architecture
-
-```text
-+---------------------------------------------------------------------------------------+
-| 1. SYNTHETIC DEMAND GENERATION ENGINE                                                 |
-|    • Python 3.12 | NumPy | Faker | Pandas                                             |
-|    • Simulates 46,000+ Poisson-distributed daily orders across 500 SKUs & 50 Vendors  |
-+-------------------------------------------+-------------------------------------------+
-                                            |
-                                            v
-+---------------------------------------------------------------------------------------+
-| 2. ENTERPRISE RELATIONAL WAREHOUSE                                                    |
-|    • PostgreSQL 16 (Products, Multi-Region Suppliers, Warehouse Zones, Sales Orders)  |
-+-------------------------------------------+-------------------------------------------+
-                                            |
-                                            v
-+---------------------------------------------------------------------------------------+
-| 3. ANALYTICAL BUSINESS LOGIC LAYER                                                    |
-|    • SQL Multi-Tier CTEs View: v_inventory_risk_monitor                               |
-|    • Computes rolling ADD, MDD, Lead-Time Variance, Dynamic Safety Stock & ROP        |
-+---------------------+-------------------------------------------+---------------------+
-                      |                                           |
-                      v                                           v
-+---------------------------------------------+   +-------------------------------------+
-| 4. EXECUTIVE BI DECISION SUITE              |   | 5. OPERATIONAL AUTOMATION ENGINE    |
-|    • Power BI (Cards v2, DAX, Custom UI)    |   |    • alert_engine.py                |
-|    • Tracks $19.00M Working Capital         |   |    • Daily exception scan           |
-|    • Highlights $20.85M Replenishment Need  |   |    • Generates CSV PO Manifests     |
-+---------------------------------------------+   +-------------------------------------+
-```
-
-## 🏗️ System Architecture
-
 ```mermaid
 flowchart TD
     subgraph S1["1. Synthetic Demand Generation Engine"]
