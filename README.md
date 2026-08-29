@@ -11,8 +11,6 @@
 
 ## 📊 Executive Dashboard Preview
 
-<img width="1524" height="886" alt="image" src="https://github.com/user-attachments/assets/b5d37470-95c9-4692-8699-6f36928e269d" />
-
 <img width="1460" height="797" alt="image" src="https://github.com/user-attachments/assets/4fbdbd4d-ee7a-4f45-b330-9e6f8697f09c" />
 
 
