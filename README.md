@@ -150,7 +150,7 @@ python python_engine/alert_engine.py
 
 ## 👤 Author
 
-**Tinotenda Muchenje**
+**Tinotenda M**
 * **Master of Science in Data Science** | Enterprise Analytics & Supply Chain Systems[cite: 1, 2]
 * **LinkedIn**: [linkedin.com/in/tinomaruz](https://linkedin.com/in/tinomaruz)[cite: 2]
 * **Email**: [tinotendamarufetu@gmail.com](mailto:tinotendamarufetu@gmail.com)[cite: 2]
